@@ -1,0 +1,8 @@
+function changeFontSize(value) {
+    let div = document.getElementById("FontSize");
+    div.style.fontSize = value + "px";
+}
+
+function loadUtilities() {
+    $("#utilities").load("http://gpjalgaon.org.in/HeadUtility.html");
+}
