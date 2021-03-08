@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#2b3e50"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/pickImgaeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="#606062"
+        android:padding="20dp"
+        android:text="Choose"
+        android:textColor="#FFF" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:id="@+id/previewImage"
+        android:layout_height="300dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Write The Notice Name -:"
+        android:textColor="#E1F00014"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Notice Name"
+        android:inputType="text"
+        android:textColor="#FFF"
+        android:textColorHint="#c9c5c5" />
+    <Button
+        android:layout_width="match_parent"
+        android:textColor="#FFF"
+        android:background="#606062"
+        android:text="Upload"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:id="@+id/upload"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

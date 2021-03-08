@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/Home"
+            android:title="Home"
+            android:icon="@drawable/other"
+
+            />
+        <item
+        android:id="@+id/Profile"
+        android:title="View Profile"
+            android:icon="@drawable/other"
+
+        />
+        <item
+            android:id="@+id/Notice"
+            android:title="Notice"
+            android:icon="@drawable/ic_notebook"
+
+            />
+        <item
+            android:id="@+id/Libary"
+            android:title="Libary"
+            android:icon="@drawable/libary"
+            />
+        <item
+            android:id="@+id/Result"
+            android:title="Sessionl Result"
+            android:icon="@drawable/libary"
+            />
+        <item
+            android:id="@+id/Activitys"
+            android:title="View Department Activitys"
+            android:icon="@drawable/ic_notebook"
+
+            />
+
+        <item
+            android:id="@+id/Lab"
+            android:title="Lab Information"
+            android:icon="@drawable/it_co"
+
+            />
+        <item
+            android:id="@+id/Staff_info"
+            android:title="Staff Information"
+            android:icon="@drawable/it_co"
+
+            />
+        <item
+            android:id="@+id/Logout"
+            android:icon="@drawable/ic_back_arrow"
+            android:title="Logout"
+
+            />
+
+    </group>
+
+</menu>
