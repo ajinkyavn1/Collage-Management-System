@@ -28,10 +28,14 @@
             android:icon="@drawable/libary"
             />
         <item
-            android:id="@+id/Result"
-            android:title="Sessionl Result"
+            android:id="@+id/Syllabus"
+            android:icon="@drawable/it_co"
+
+            android:title="Study Material" />
+        <item
+            android:id="@+id/Collage_Activity"
             android:icon="@drawable/libary"
-            />
+            android:title="Collage Activity" />
         <item
             android:id="@+id/Activitys"
             android:title="View Department Activitys"
@@ -45,12 +49,7 @@
             android:icon="@drawable/it_co"
 
             />
-        <item
-            android:id="@+id/Staff_info"
-            android:title="Staff Information"
-            android:icon="@drawable/it_co"
 
-            />
         <item
             android:id="@+id/Logout"
             android:icon="@drawable/ic_back_arrow"

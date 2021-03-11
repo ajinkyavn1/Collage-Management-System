@@ -4,56 +4,59 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.google.android.material.navigation.NavigationView;
+import com.gpj.govermentpolytechnicjalgaon.Constants.Constant;
+import com.gpj.govermentpolytechnicjalgaon.Principal.Saff_info;
 import com.gpj.govermentpolytechnicjalgaon.R;
 
 public class Student_Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout mnavDrawer;
     TextView name,branch;
-    FrameLayout viewNotice;
+    FrameLayout viewNotice,syllabus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawer_layout_student);
-        Toolbar toolbar=findViewById(R.id.Student_Toolbar);
-        setSupportActionBar(toolbar);
+        View toolbar=findViewById(R.id.Student_Toolbar);
+        setSupportActionBar((Toolbar) toolbar);
 
 
-        toolbar.setTitle("GOVERNMENT POLYTECHNIC JALGAON");
+        ((Toolbar) toolbar).setTitle("GOVERNMENT POLYTECHNIC JALGAON");
 
-        mnavDrawer=findViewById(R.id.drawer_student);
-        NavigationView navigationView=findViewById(R.id.design_navigation_view);
+        mnavDrawer= (DrawerLayout) findViewById(R.id.drawer_student);
+        NavigationView navigationView= (NavigationView) findViewById(R.id.design_navigation_view);
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
-                this,mnavDrawer,toolbar,
+                this,mnavDrawer, (Toolbar) toolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close );
         mnavDrawer.addDrawerListener(toggle);
         toggle.syncState();
-        branch=findViewById(R.id.Branch);
+        branch= (TextView) findViewById(R.id.Branch);
         branch.setText("Information Technology");
-
-
-        switch (Student.Branch)
+        switch (Constant.Branch)
         {
             case "ME":branch.setText("Mechanical Engineering");;break;
             case "IT":branch.setText("Information Technology"); break;
-
+            case "CE":branch.setText("Civil Engineering"); break;
+            case  "EEE": branch.setText("Electrical Engineering"); break;
+            case  "E&tc":branch.setText("E&TC"); break;
+            case  "CO":branch.setText("Computer Engineering"); break;
         }
-        viewNotice=findViewById(R.id.View_Notice_Board);
+        viewNotice= (FrameLayout) findViewById(R.id.View_Notice_Board);
+
         viewNotice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +64,61 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
 
             }
         });
+
+        findViewById(R.id.Message_To_Staff).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), Saff_info.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.Syllabus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.Frame,new Uploaded_Notes()).commit();
+            }
+        });
+        findViewById(R.id.Sectinal_Result).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.Frame,new Result()).commit();
+            }
+        });
+
+
+        findViewById(R.id.Activitys).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.Frame,new Department_Activity()).commit();
+            }
+        });
+
+        findViewById(R.id.COMPUTER_LABS).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.Frame,new Labs()).commit();
+            }
+        });
+        findViewById(R.id.Collage_Activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.Frame,new Collage_Activity()).commit();
+            }
+        });
+        findViewById(R.id.Department_Libary).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.Frame,new Libary()).commit();
+            }
+        });
+
         navigationView.setNavigationItemSelectedListener(this);
+
+
 
     }
 
@@ -72,7 +129,8 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
 
             mnavDrawer.closeDrawer(GravityCompat.START);
         }else {
-            super.onBackPressed();
+            startActivity(new Intent(getApplicationContext(),Student_Main.class));
+            finish();
         }
     }
 
@@ -85,9 +143,10 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(getApplicationContext(),Student_Main.class));
                 finish();
                 break;
+
             case R.id.Profile :
                 getSupportFragmentManager().beginTransaction()
-              .replace(R.id.Frame,new SProfile()).commit();
+                        .replace(R.id.Frame,new SProfile()).commit();
                    break;
             case R.id.Notice :
                 getSupportFragmentManager().beginTransaction()
@@ -99,17 +158,20 @@ public class Student_Main extends AppCompatActivity implements NavigationView.On
                         .replace(R.id.Frame,new Libary()).commit();
                 break;
 
-            case R.id.Sessionl_Result:
-
+            case R.id.Syllabus:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.Frame,new Uploaded_Notes()).commit();
                 break;
-
+            case R.id.Collage_Activity:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.Frame,new Collage_Activity()).commit();
+                break;
             case R.id.Lab:
-
-                break;
+                getSupportFragmentManager().beginTransaction()
+                .replace(R.id.Frame,new Labs()).commit();
+            break;
 
             case  R.id.Logout :
-                SharedPreferences preferences =getSharedPreferences("user", Context.MODE_PRIVATE);
-                preferences.edit().remove("text").commit();
                 startActivity(new Intent(getApplicationContext(), Student.class));
                 finish();
                 break;

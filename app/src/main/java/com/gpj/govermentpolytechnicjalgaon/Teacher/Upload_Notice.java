@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +18,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.gpj.govermentpolytechnicjalgaon.Constants.Constant;
 import com.gpj.govermentpolytechnicjalgaon.R;
 
 import java.io.ByteArrayOutputStream;
@@ -43,10 +43,11 @@ public class Upload_Notice extends Fragment {
     private Bitmap bitmap;
     private String KEY_IMAGE = "image";
     private String KEY_NAME = "name";
+    private String KEY_BRANCH= "branch";
 
     private int PICK_IMAGE_REQUEST = 1;
     View rootView;
-    private String UPLOAD_URL ="http://192.168.43.196/GPJ/Departments/IT/Teacher/Notice/upload.php";
+    private String UPLOAD_URL = Constant.ip+"/GPJ/Departments/IT/Teacher/Notice/upload.php";
 
     public Upload_Notice() {
         // Required empty public constructor
@@ -61,9 +62,9 @@ public class Upload_Notice extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-            setRetainInstance(true);
-            rootView = inflater.inflate(R.layout.fragment_upload__notice, container, false);
-            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        setRetainInstance(true);
+        rootView = inflater.inflate(R.layout.fragment_upload__notice, container, false);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         name= (EditText)rootView.findViewById(R.id.name);
 
         pickImage= (Button)rootView.findViewById(R.id.pickImgaeButton);
@@ -176,7 +177,8 @@ public class Upload_Notice extends Fragment {
 
                 //Adding parameters
                 params.put(KEY_IMAGE, image);
-                params.put(KEY_NAME, name1);
+                params.put(KEY_NAME,name1);
+                params.put(KEY_BRANCH, Constant.Branch);
 
                 //returning parameters
                 return params;

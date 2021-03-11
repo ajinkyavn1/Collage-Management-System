@@ -1,13 +1,14 @@
 package com.gpj.govermentpolytechnicjalgaon.Student;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
-
-import androidx.fragment.app.Fragment;
+import android.webkit.WebViewClient;
 
 import com.gpj.govermentpolytechnicjalgaon.R;
 
@@ -35,7 +36,10 @@ WebView libary;
         rootView =inflater.inflate(R.layout.fragment_libary, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         libary=(WebView) rootView.findViewById(R.id.Libary_Webview);
+        libary.setWebViewClient(new WebViewClient());
         libary.loadUrl("https://ndl.iitkgp.ac.in");
+        WebSettings webSettings=libary.getSettings();
+        webSettings.setJavaScriptEnabled(true);
         return rootView;
     }
 

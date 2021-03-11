@@ -11,10 +11,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="317dp"
-        android:layout_height="123dp"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
         android:layout_marginBottom="20dp"
         app:srcCompat="@drawable/logo" />
+
 
     <EditText
         android:id="@+id/etLoginUsername"
@@ -26,7 +27,6 @@
         android:hint="username"
         android:inputType="textPersonName"
         android:padding="10dp" />
-
 
     <EditText
         android:id="@+id/Password"
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="#aaa"
+        android:background="#A486D7E4"
         android:text="Register"
         android:textColor="@android:color/white" />
 

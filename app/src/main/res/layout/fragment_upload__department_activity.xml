@@ -21,11 +21,11 @@
 
             <Button
                 android:id="@+id/pickImgaeButton"
-                android:layout_width="248dp"
+                android:layout_width="113dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="#606062"
+                android:background="#9090EC"
                 android:padding="20dp"
                 android:text="Choose"
                 android:textColor="#FFF" />
@@ -50,11 +50,11 @@
 
             <Button
                 android:id="@+id/upload"
-                android:layout_width="match_parent"
+                android:layout_width="187dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="#606062"
+                android:background="#9090EC"
                 android:padding="20dp"
                 android:text="Upload"
                 android:textColor="#FFF" />

@@ -1,14 +1,14 @@
 package com.gpj.govermentpolytechnicjalgaon.Student;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
-
+import com.gpj.govermentpolytechnicjalgaon.Constants.Constant;
 import com.gpj.govermentpolytechnicjalgaon.R;
 
 public class SProfile extends Fragment {
@@ -27,14 +27,14 @@ View rootView;
         setRetainInstance(true);
         rootView = inflater.inflate(R.layout.fragment_sprofile, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        NAME=rootView.findViewById(R.id.Name);
-        EMAIL=rootView.findViewById(R.id.Email);
-        ENROLLMENT=rootView.findViewById(R.id.Enrollment);
-        MOBAIL=rootView.findViewById(R.id.Mobail);
-        YEAR=rootView.findViewById(R.id.Year);
-        DOB=rootView.findViewById(R.id.DOB);
-        ROLL=rootView.findViewById(R.id.Roll);
-        BRANCH=rootView.findViewById(R.id.Branch);
+        NAME= (TextView) rootView.findViewById(R.id.Name);
+        EMAIL= (TextView) rootView.findViewById(R.id.Email);
+        ENROLLMENT= (TextView) rootView.findViewById(R.id.Enrollment);
+        MOBAIL= (TextView) rootView.findViewById(R.id.Mobail);
+        YEAR= (TextView) rootView.findViewById(R.id.Year);
+        DOB= (TextView) rootView.findViewById(R.id.DOB);
+        ROLL= (TextView) rootView.findViewById(R.id.Roll);
+        BRANCH= (TextView) rootView.findViewById(R.id.Branch);
 
         NAME.append(Student.name);
         EMAIL.append(Student.email);
@@ -43,7 +43,7 @@ View rootView;
         YEAR.append(Student.year);
         DOB.append(Student.DOB);
         ROLL.append(Student.rollNo);
-        BRANCH.append(Student.Branch);
+        BRANCH.append(Constant.Branch);
 
 
         return rootView;

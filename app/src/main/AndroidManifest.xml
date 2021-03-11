@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.gpj.govermentpolytechnicjalgaon">
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,6 +15,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Principal.Saff_info"></activity>
+        <activity android:name=".Principal.Lab" />
+        <activity android:name=".Principal.Principal_Main" />
+        <activity android:name=".Principal.Principal" />
         <activity
             android:name=".Student.Student_Main"
             android:theme="@style/AppTheme.NoActionBar" />

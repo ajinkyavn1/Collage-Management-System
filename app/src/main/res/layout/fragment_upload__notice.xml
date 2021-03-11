@@ -6,11 +6,11 @@
 
     <Button
         android:id="@+id/pickImgaeButton"
-        android:layout_width="match_parent"
+        android:layout_width="231dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:background="#606062"
+        android:background="#9090EC"
         android:padding="20dp"
         android:text="Choose"
         android:textColor="#FFF" />
@@ -35,16 +35,17 @@
         android:inputType="text"
         android:textColor="#FFF"
         android:textColorHint="#c9c5c5" />
+
     <Button
-        android:layout_width="match_parent"
-        android:textColor="#FFF"
-        android:background="#606062"
-        android:text="Upload"
-        android:layout_gravity="center"
-        android:padding="20dp"
         android:id="@+id/upload"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_height="wrap_content" />
+        android:background="#9090EC"
+        android:padding="20dp"
+        android:text="Upload"
+        android:textColor="#FFF" />
 
 
 </LinearLayout>

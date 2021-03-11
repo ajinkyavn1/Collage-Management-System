@@ -3,20 +3,19 @@ package com.gpj.govermentpolytechnicjalgaon.Teacher;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.gpj.govermentpolytechnicjalgaon.MySingleton;
+import com.gpj.govermentpolytechnicjalgaon.Comman_Class.MySingleton;
+import com.gpj.govermentpolytechnicjalgaon.Constants.Constant;
 import com.gpj.govermentpolytechnicjalgaon.R;
 
 import org.json.JSONArray;
@@ -31,17 +30,23 @@ public class Teachers extends AppCompatActivity {
     TextView tb;
     ProgressDialog progressDialog;
     EditText username,password;
-     static  String name,Branch,DOB,yearoj,email,mobail;
-    String url ="http://192.168.43.196/GPJ/Departments/IT/Teacher/Login.php";
+     static  String name;
+    public static String Branch;
+    static String DOB;
+    static String Username;
+    static String yearoj;
+    static String email;
+    static String mobail;
+    String url = Constant.ip+"/GPJ/Departments/IT/Teacher/Login.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teachers);
-        register=findViewById(R.id.btnLoginRegister);
-        login=findViewById(R.id.btnLogin);
-        tb=findViewById(R.id.tb);
-        username=findViewById(R.id.etLoginUsername);
-        password=findViewById(R.id.Password);
+        register= (Button) findViewById(R.id.btnLoginRegister);
+        login= (Button) findViewById(R.id.btnLogin);
+        tb= (TextView) findViewById(R.id.tb);
+        username= (EditText) findViewById(R.id.etLoginUsername);
+        password= (EditText) findViewById(R.id.Password);
         progressDialog = new ProgressDialog(this);
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -82,14 +87,16 @@ public class Teachers extends AppCompatActivity {
                             {
 
                                  name=jsonObject.getString("name");
+                                 Username=jsonObject.getString("username");
                               email=jsonObject.getString("email");
                                 yearoj =jsonObject.getString("Year_of_joining");
                                DOB =jsonObject.getString("DOB");
-                               Branch =jsonObject.getString("Branch");
+                               Constant.Branch =jsonObject.getString("Branch");
                                  mobail =jsonObject.getString("Mobail");
-                                startActivity(new Intent(getApplicationContext(), Teacher_Main.class));
-                                progressDialog.dismiss();
 
+                                progressDialog.dismiss();
+                                startActivity(new Intent(getApplicationContext(), Teacher_Main.class));
+                                finish();
                             }
                             else{
                                 progressDialog.dismiss();
@@ -113,8 +120,6 @@ public class Teachers extends AppCompatActivity {
                 params.put("password", Pass);
                 return params;
             }
-
-            ;
         };
         MySingleton.getInstance(Teachers.this).addToRequestque(stringRequest);
     }

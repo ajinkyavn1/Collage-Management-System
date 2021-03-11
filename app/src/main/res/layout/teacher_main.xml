@@ -4,10 +4,10 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="#502a5e"
+android:background="@drawable/teacher"
 android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_Teacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@ android:orientation="vertical">
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
+                    <android.support.v7.widget.CardView
                         android:id="@+id/item1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -85,7 +85,8 @@ android:orientation="vertical">
                                     android:layout_width="45dp"
                                     android:layout_height="45dp"
                                     android:layout_marginTop="25dp"
-                                    app:srcCompat="@drawable/ic_notebook" />
+                                    app:srcCompat="@drawable/ic_notebook"
+                                    tools:ignore="VectorDrawableCompat" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -99,7 +100,7 @@ android:orientation="vertical">
                             </LinearLayout>
 
                         </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
@@ -113,7 +114,7 @@ android:orientation="vertical">
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
+                    <android.support.v7.widget.CardView
                         android:id="@+id/item2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -147,7 +148,8 @@ android:orientation="vertical">
                                         android:layout_width="35dp"
                                         android:layout_height="35dp"
                                         android:layout_marginTop="25dp"
-                                        app:srcCompat="@drawable/libary" />
+                                        app:srcCompat="@drawable/libary"
+                                        tools:ignore="VectorDrawableCompat" />
 
                                     <TextView
                                         android:layout_width="171dp"
@@ -164,7 +166,7 @@ android:orientation="vertical">
                             </FrameLayout>
 
                         </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
@@ -186,7 +188,7 @@ android:orientation="vertical">
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
+                    <android.support.v7.widget.CardView
 
                         android:id="@+id/item3"
                         android:layout_width="match_parent"
@@ -218,7 +220,8 @@ android:orientation="vertical">
                                     android:layout_width="35dp"
                                     android:layout_height="35dp"
                                     android:layout_marginTop="25dp"
-                                    app:srcCompat="@drawable/ic_notebook" />
+                                    app:srcCompat="@drawable/ic_notebook"
+                                    tools:ignore="VectorDrawableCompat" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -231,7 +234,7 @@ android:orientation="vertical">
                             </LinearLayout>
 
                         </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
@@ -245,7 +248,7 @@ android:orientation="vertical">
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
+                    <android.support.v7.widget.CardView
 
                         android:id="@+id/item4"
                         android:layout_width="match_parent"
@@ -277,7 +280,8 @@ android:orientation="vertical">
                                     android:layout_width="71dp"
                                     android:layout_height="44dp"
                                     android:layout_marginTop="20dp"
-                                    app:srcCompat="@drawable/ic_bell" />
+                                    app:srcCompat="@drawable/ic_bell"
+                                    tools:ignore="VectorDrawableCompat" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -291,7 +295,7 @@ android:orientation="vertical">
                             </LinearLayout>
 
                         </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
@@ -312,7 +316,7 @@ android:orientation="vertical">
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
+                    <android.support.v7.widget.CardView
                         android:id="@+id/item5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -329,7 +333,7 @@ android:orientation="vertical">
                             android:gravity="center">
 
                             <FrameLayout
-                                android:id="@+id/Take_Attendance"
+                                android:id="@+id/Collage_Activity"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent" />
 
@@ -343,13 +347,14 @@ android:orientation="vertical">
                                     android:layout_width="100dp"
                                     android:layout_height="39dp"
                                     android:layout_marginTop="10dp"
-                                    app:srcCompat="@drawable/groups" />
+                                    app:srcCompat="@drawable/groups"
+                                    tools:ignore="VectorDrawableCompat" />
 
                                 <TextView
                                     android:layout_width="161dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
-                                    android:text="Take Attendance "
+                                    android:text="Collage Activitys"
                                     android:textAlignment="center"
                                     android:textColor="#000"
                                     android:textSize="18sp" />
@@ -357,7 +362,7 @@ android:orientation="vertical">
                             </LinearLayout>
 
                         </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
@@ -371,7 +376,7 @@ android:orientation="vertical">
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
+                    <android.support.v7.widget.CardView
                         android:id="@+id/item6"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -403,7 +408,8 @@ android:orientation="vertical">
                                     android:layout_width="35dp"
                                     android:layout_height="35dp"
                                     android:layout_marginTop="10dp"
-                                    app:srcCompat="@drawable/it_co" />
+                                    app:srcCompat="@drawable/it_co"
+                                    tools:ignore="VectorDrawableCompat" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -414,7 +420,7 @@ android:orientation="vertical">
                                     android:textSize="18dp" />
                             </LinearLayout>
                         </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
@@ -437,7 +443,7 @@ android:orientation="vertical">
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
+                    <android.support.v7.widget.CardView
 
                         android:id="@+id/item8"
                         android:layout_width="match_parent"
@@ -469,7 +475,8 @@ android:orientation="vertical">
                                     android:layout_width="35dp"
                                     android:layout_height="35dp"
                                     android:layout_marginTop="25dp"
-                                    app:srcCompat="@drawable/ic_notebook" />
+                                    app:srcCompat="@drawable/ic_notebook"
+                                    tools:ignore="VectorDrawableCompat" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -482,7 +489,7 @@ android:orientation="vertical">
                             </LinearLayout>
 
                         </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 
@@ -496,7 +503,7 @@ android:orientation="vertical">
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
+                    <android.support.v7.widget.CardView
 
                         android:id="@+id/item7"
                         android:layout_width="match_parent"
@@ -528,7 +535,8 @@ android:orientation="vertical">
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_marginTop="20dp"
-                                    app:srcCompat="@drawable/libary" />
+                                    app:srcCompat="@drawable/libary"
+                                    tools:ignore="VectorDrawableCompat" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -541,7 +549,7 @@ android:orientation="vertical">
                             </LinearLayout>
 
                         </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
+                    </android.support.v7.widget.CardView>
 
                 </LinearLayout>
 

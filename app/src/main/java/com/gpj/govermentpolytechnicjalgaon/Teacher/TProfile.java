@@ -1,14 +1,14 @@
 package com.gpj.govermentpolytechnicjalgaon.Teacher;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
-
+import com.gpj.govermentpolytechnicjalgaon.Constants.Constant;
 import com.gpj.govermentpolytechnicjalgaon.R;
 
 
@@ -34,12 +34,12 @@ public class TProfile extends Fragment {
         setRetainInstance(true);
         rootView = inflater.inflate(R.layout.tprofile, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        NAME = rootView.findViewById(R.id.Name);
-        EMAIL = rootView.findViewById(R.id.Email);
-        MOBAIL = rootView.findViewById(R.id.Mobail);
-       Joining = rootView.findViewById(R.id.Join_Year);
-        DOB = rootView.findViewById(R.id.DOB);
-        BRANCH = rootView.findViewById(R.id.Branch);
+        NAME = (TextView) rootView.findViewById(R.id.Name);
+        EMAIL = (TextView) rootView.findViewById(R.id.Email);
+        MOBAIL = (TextView) rootView.findViewById(R.id.Mobail);
+       Joining = (TextView) rootView.findViewById(R.id.Join_Year);
+        DOB = (TextView) rootView.findViewById(R.id.DOB);
+        BRANCH = (TextView) rootView.findViewById(R.id.Branch);
 
 
         NAME.append(Teachers.name);
@@ -47,7 +47,7 @@ public class TProfile extends Fragment {
         DOB.append(Teachers.DOB);
         MOBAIL.append(Teachers.mobail);
         Joining.append(Teachers.yearoj);
-        BRANCH.append(Teachers.Branch);
+        BRANCH.append(Constant.Branch);
 
         return rootView;
     }

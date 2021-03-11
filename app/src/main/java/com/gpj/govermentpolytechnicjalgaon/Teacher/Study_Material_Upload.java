@@ -1,28 +1,31 @@
 package com.gpj.govermentpolytechnicjalgaon.Teacher;
 
 import android.Manifest;
-import android.app.Activity;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
+import com.gpj.govermentpolytechnicjalgaon.Constants.Constant;
 import com.gpj.govermentpolytechnicjalgaon.R;
 
 import net.gotev.uploadservice.MultipartUploadRequest;
@@ -30,16 +33,14 @@ import net.gotev.uploadservice.UploadNotificationConfig;
 
 import java.util.UUID;
 
-import static android.app.Activity.RESULT_OK;
-
 public class Study_Material_Upload extends Fragment implements View.OnClickListener {
 View rootView;
     private Button buttonChoose;
     private Button buttonUpload;
-
+    ProgressDialog progressDialog;
     private EditText editText;
 
-    public static final String UPLOAD_URL = "http://192.168.43.196/gpj/Departments/IT/Teacher/Syllabus/upload.php";
+    public static final String UPLOAD_URL =  Constant.ip+"/gpj/Departments/IT/Teacher/Syllabus/upload.php";
 
     ImageView imageView;
 
@@ -54,21 +55,7 @@ View rootView;
     //Uri to store the image uri
     private Uri filePath;
 
-    //ListView to show the fetched Pdfs from the server
-    ListView listView;
 
-    //button to fetch the intiate the fetching of pdfs.
-    Button buttonFetch;
-
-    //Progress bar to check the progress of obtaining pdfs
-    ProgressDialog progressDialog;
-
-    //an array to hold the different pdf objects
-  //  ArrayList<Pdf> pdfList = new ArrayList<Pdf>();
-
-    //pdf adapter
-
-    //PdfAdapter pdfAdapter;
 
     public Study_Material_Upload() {
         // Required empty public constructor
@@ -94,14 +81,14 @@ View rootView;
         buttonChoose = (Button) rootView.findViewById(R.id.buttonChoose);
         buttonUpload = (Button)rootView.findViewById(R.id.buttonUpload);
 
-
+        progressDialog = new ProgressDialog(getActivity());
         editText = (EditText) rootView.findViewById(R.id.editTextName);
 
         //initializing ListView
 
         //initializing progressDialog
 
-       progressDialog = new ProgressDialog(getContext());
+       // progressDialog = new ProgressDialog(getContext());
 
         //Setting clicklistener
         buttonChoose.setOnClickListener(this);
@@ -109,42 +96,43 @@ View rootView;
         return rootView;
     }
 
-
     public void uploadMultipart() {
         //getting name for the pdf
         String name = editText.getText().toString().trim();
 
         //getting the actual path of the pdf
-        String path = FilePath.getPath(getActivity(), filePath);
+        String path = FilePath.getPath(getContext(), filePath);
 
         if (path == null) {
 
-            Toast.makeText(getActivity(), "Please Select file to internal storage and retry", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Please move your .pdf file to internal storage and retry", Toast.LENGTH_LONG).show();
         } else {
             //Uploading code
             try {
                 String uploadId = UUID.randomUUID().toString();
-
-                //Creating a multi part request
                 new MultipartUploadRequest(getActivity(), uploadId, UPLOAD_URL)
                         .addFileToUpload(path, "pdf") //Adding file
                         .addParameter("name", name) //Adding text parameter to the request
+                        .setNotificationConfig(new UploadNotificationConfig())
                         .setMaxRetries(2)
                         .startUpload(); //Starting the upload
+                        progressDialog.dismiss();
 
             } catch (Exception exc) {
-                Toast.makeText(getActivity(), exc.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                Toast.makeText(getContext(), exc.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
 
+
     //method to show file chooser
     private void showFileChooser() {
         Intent intent = new Intent();
-        intent.setType("application/pdf");
+        intent.setType("*/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Pdf"), PICK_PDF_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Select Files"), 1);
     }
 
     //handling the ima chooser activity result
@@ -152,7 +140,7 @@ View rootView;
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_PDF_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == 1 && resultCode == AppCompatActivity.RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
 
         }
@@ -161,17 +149,14 @@ View rootView;
 
     //Requesting permission
     private void requestStoragePermission() {
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             return;
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            //If the user has denied the permission previously your code will come to this block
-            //Here you can explain why you need this permission
-            //Explain here why you need this permission
+
         }
         //And finally ask for the permission
-        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.INSTANT_APP_FOREGROUND_SERVICE}, STORAGE_PERMISSION_CODE);
-
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
     }
 
 
@@ -185,10 +170,10 @@ View rootView;
             //If permission is granted
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 //Displaying a toast
-                Toast.makeText(getActivity(), "Permission granted now you can read the storage", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Permission granted now you can read the storage", Toast.LENGTH_LONG).show();
             } else {
                 //Displaying another toast if permission is not granted
-                Toast.makeText(getActivity(), "Oops you just denied the permission", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Oops you just denied the permission", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -200,7 +185,18 @@ View rootView;
             showFileChooser();
         }
         if (v == buttonUpload) {
-            uploadMultipart();
+            String path = FilePath.getPath(getContext(), filePath);
+            if(path==null)
+            {
+             Toast.makeText(getActivity(),"Please select Pdf",Toast.LENGTH_LONG).show();
+            }
+            else {
+                progressDialog.setMessage("Uploading.... Please Wait..");
+                progressDialog.show();
+                uploadMultipart();
+            }
+
+
         }
 
     }
